@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable View</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 20px;
+            padding: 10px;
+            border: 1px solid #d1d5db; /* Light border */
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            height: 8px; /* Scrollbar height for horizontal scrolling */
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #9ca3af; /* Thumb color */
+            border-radius: 4px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; /* Darker thumb on hover */
+        }
+
+        .card {
+            flex: 0 0 auto; /* Prevent cards from shrinking */
+            width: 200px;
+            height: 150px;
+            border: 1px solid #e5e7eb; /* Light gray border */
+            border-radius: 8px;
+            background-color: #1f2937; /* Dark background */
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            background-color: #374151;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .vertical-scroll {
+            height: 300px; /* Set height for vertical scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .vertical-scroll::-webkit-scrollbar {
+            width: 8px; /* Scrollbar width for vertical scrolling */
+        }
+
+        .vertical-scroll::-webkit-scrollbar-thumb {
+            background: #9ca3af;
+            border-radius: 4px;
+        }
+
+        .vertical-scroll::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="p-5">
+        <h2 class="text-xl font-semibold mb-4">Horizontal Scroll View</h2>
+        <div class="scroll-container">
+            <div class="card">Card 1</div>
+            <div class="card">Card 2</div>
+            <div class="card">Card 3</div>
+            <div class="card">Card 4</div>
+            <div class="card">Card 5</div>
+            <div class="card">Card 6</div>
+        </div>
+
+        <h2 class="text-xl font-semibold mt-8 mb-4">Vertical Scroll View</h2>
+        <div class="vertical-scroll">
+            <div class="card mb-4">Item 1</div>
+            <div class="card mb-4">Item 2</div>
+            <div class="card mb-4">Item 3</div>
+            <div class="card mb-4">Item 4</div>
+            <div class="card mb-4">Item 5</div>
+            <div class="card mb-4">Item 6</div>
+        </div>
+    </div>
+</body>
+</html>

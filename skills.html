@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Scrollable Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: grid; /* Use grid to center content */
+            place-items: center; /* Center horizontally and vertically */
+            min-height: 100vh; /* Ensure full-screen height */
+            background-color: #f9fafb; /* Light gray background */
+        }
+
+        /* Scrollable Horizontal Layout */
+        .scroll-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .box {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      background: #32dd49;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      background-color:white;
+      color:black;
+      
+    }
+
+    .box-description {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgb(255, 255, 255);
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 8px;
+      border-radius: 5px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .box:hover .box-description {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+        /* "Tools I Use" Section */
+        .tools-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .tools-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tools-list {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tool {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: #32dd49;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .tool img {
+            max-width: 50%;
+            max-height: 50%;
+        }
+
+        .tool:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.1);
+        }
+        .tool-description {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(15, 12, 12, 0.815);
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 8px;
+      border-radius: 5px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+    .tool:hover .tool-description {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+        /* Header Styles */
+.header {
+  background-color: #1e1e1e; /* Dark background */
+  color: white; /* Text color */
+  padding: 15px 20px; /* Padding for the header */
+  display: flex;
+  justify-content: space-between; /* Space between logo and social links */
+  align-items: center; /* Center items vertically */
+  position: fixed; /* Stick to the top */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other elements */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.header-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px; /* Space between social media icons */
+}
+
+.social-links a {
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links img {
+  width: 25px;
+  height: 25px;
+}
+
+.social-links a:hover img {
+  transform: scale(1.2); /* Zoom in on hover */
+  opacity: 0.8;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #1e1e1e; /* Dark background */
+  color: white; /* Text color */
+  padding: 20px 0; /* Padding for the footer */
+  text-align: center;
+  position: fixed; /* Stick to the bottom */
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's always on top */
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center; /* Center navigation links */
+  gap: 30px; /* Space between links */
+  list-style: none; /* Remove default list styling */
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #32dd49; /* Highlight on hover */
+  transform: scale(1.1); /* Slight zoom */
+}
+
+.footer p {
+  margin-top: 10px; /* Space above copyright text */
+  font-size: 0.9rem;
+  opacity: 0.8; /* Subtle transparency */
+}
+.watermark {
+      position: fixed; /* Stays in the same place, even when scrolling */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust for proper centering */
+      opacity: 0.1; /* Transparent enough to not disturb content */
+      z-index: -1; /* Behind the main content */
+      pointer-events: none; /* Prevent interaction with the watermark */
+    }
+    /* Full-screen GIF background */
+    .fullscreen-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
+      background-size: cover;
+    }
+    h1 {
+      
+      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+      transition: transform 0.5s ease, color 0.5s ease; /* Smooth hover effect */
+    }
+
+    h1:hover {
+      color: #00ffc6;
+      transform: scale(1.1); /* Slight zoom on hover */
+    }
+    .box-description {
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Skills</h1>
+    <header class="header">
+        <img src="HARSHITH H D (4).png" alt="Logo" class="header-logo">
+        <h2>Harshith H D</h2>
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/harshith-h-d" target="_blank">
+            <img src="Linkedin-logo.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/harshith_h_d" target="_blank">
+            <img src="instagram-logo.jpg" alt="Instagram">
+          </a>
+          <a href="https://github.com/HARSHITH-H-D" target="_blank">
+            <img src="github-logo.png" alt="GitHub">
+          </a>
+        </div>
+      </header>
+      <div class="fullscreen-bg"></div>
+      <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark" width="400" height="400">
+      
+    <!-- Scrollable Container -->
+    
+    <div class="scroll-container">
+        <div class="box">
+            Languages
+            <div class="box-description">Programming languages I am proficient in Python, Java, C, C++.</div>
+        </div>
+        <div class="box">
+            Education
+            <div class="box-description">B.E. Computer Science and Engineering.</div>
+        </div>
+        <div class="box">
+            Projects
+            <div class="box-description">Worked in more than 5 projects and it's description is in other page.</div>
+        </div>
+        <div class="box">
+            Domains
+            <div class="box-description">Ethical Hacking,Mobile Application Development,Exploratory Data Analysis,MAchine learning.</div>
+        </div>
+    </div>
+
+    <div class="tools-container">
+        <div class="tools-title">Tools I Use</div>
+        <div class="tools-list">
+            <div class="tool">
+                <img src="download (1).png" alt="VS Code">
+                <div class="tool-description">VS Code</div>
+            </div>
+            <div class="tool">
+                <img src="python.png" alt="Python">
+                <div class="tool-description">Python</div>
+            </div>
+            <div class="tool">
+                <img src="firebase.png" alt="Firebase">
+                <div class="tool-description">Firebase</div>
+            </div>
+            <div class="tool">
+                <img src="android.png" alt="Android">
+                <div class="tool-description">Android</div>
+            </div>
+            <div class="tool">
+                <img src="java.png" alt="Java">
+                <div class="tool-description">Java</div>
+            </div>
+            <div class="tool">
+                <img src="kali.png" alt="Kali">
+                <div class="tool-description">Kali</div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Section -->
+  <footer class="footer">
+    <ul class="footer-nav">
+      <li><a href="stats.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p>&copy; 2025 Harshith H D. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

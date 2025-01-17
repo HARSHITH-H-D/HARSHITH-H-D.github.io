@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Background</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    .watermark {
+      position: fixed; /* Stays in the same place, even when scrolling */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%); /* Adjust for proper centering */
+      opacity: 0.1; /* Transparent enough to not disturb content */
+      z-index: -1; /* Behind the main content */
+      pointer-events: none; /* Prevent interaction with the watermark */
+    }
+    /* Full-screen GIF background */
+    .fullscreen-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
+      background-size: cover;
+    }
+    h1 {
+      font-size: 3rem;
+      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+      transition: transform 0.5s ease, color 0.5s ease; /* Smooth hover effect */
+    }
+
+    h1:hover {
+      color: #00ffc6;
+      transform: scale(1.1); /* Slight zoom on hover */
+    }
+    /* Content Overlay */
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      font-family:'Courier New', Courier, monospace;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr; /* Image takes 1/3, text takes 1.5/3 */
+      align-items: center; /* Aligns items vertically */
+      gap: 20px; /* Space between image and text */
+      padding: 20px; /* Padding around the content */
+      height: 100%;
+    }
+
+    .image-left {
+      justify-self: center; /* Center the image in its grid cell */
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    .image-left1{
+      justify-self: center; 
+      align-self: auto;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      opacity:0.5;
+    }
+
+    .image-left:hover {
+      transform: scale(1.1); /* Zoom in on hover */
+      opacity: 0.9;
+    }
+
+    .text-right {
+      justify-self: start; /* Align text to the left */
+    }
+
+    h1 {
+      font-size: 3rem;
+      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+    }
+
+    p {
+      font-size: 1.2rem;
+      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+      margin-top: 10px; /* Add some space between paragraphs */
+    }
+    
+    /* General Styles */
+
+
+/* Header Styles */
+.header {
+  background-color: #1e1e1e; /* Dark background */
+  color: white; /* Text color */
+  padding: 15px 20px; /* Padding for the header */
+  display: flex;
+  justify-content: space-between; /* Space between logo and social links */
+  align-items: center; /* Center items vertically */
+  position: fixed; /* Stick to the top */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it appears above other elements */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.header-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px; /* Space between social media icons */
+}
+
+.social-links a {
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links img {
+  width: 25px;
+  height: 25px;
+}
+
+.social-links a:hover img {
+  transform: scale(1.2); /* Zoom in on hover */
+  opacity: 0.8;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #1e1e1e; /* Dark background */
+  color: white; /* Text color */
+  padding: 20px 0; /* Padding for the footer */
+  text-align: center;
+  position: fixed; /* Stick to the bottom */
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's always on top */
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center; /* Center navigation links */
+  gap: 30px; /* Space between links */
+  list-style: none; /* Remove default list styling */
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #32dd49; /* Highlight on hover */
+  transform: scale(1.1); /* Slight zoom */
+}
+
+.footer p {
+  margin-top: 10px; /* Space above copyright text */
+  font-size: 0.9rem;
+  opacity: 0.8; /* Subtle transparency */
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <img src="HARSHITH H D (4).png" alt="Logo" class="header-logo">
+    <h2>Harshith H D</h2>
+    <!-- Social Links -->
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/harshith-h-d" target="_blank">
+        <img src="Linkedin-logo.png" alt="LinkedIn">
+      </a>
+      <a href="https://www.instagram.com/harshith_h_d" target="_blank">
+        <img src="instagram-logo.jpg" alt="Instagram">
+      </a>
+      <a href="https://github.com/HARSHITH-H-D" target="_blank">
+        <img src="github-logo.png" alt="GitHub">
+      </a>
+    </div>
+  </header>
+  <div class="fullscreen-bg"></div>
+  <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark" width="400" height="400">
+
+  <div class="content">
+    <!-- Image -->
+    <img id="clickableImage" src="custom_HARSHITH H D_fc25_download (3).png" alt="Image" height="500" width="500" class="image-left">
+    
+    <script>
+    document.getElementById('clickableImage').addEventListener('mouseover', function() {
+        this.src = 'hd.png';
+    });
+    document.getElementById('clickableImage').addEventListener('mouseout', function() {
+        this.src = 'custom_HARSHITH H D_fc25_download (3).png';
+    });
+    </script>
+    
+    <!-- Text -->
+    <div class="text-right">
+      <h1>ABOUT</h1>
+      <p>I'm HARSHITH.H.D. I'm an Engineering Student pursuing my degree in PMC Tech which is affiliated under ANNA university.</p>
+      <p>The subject of interest for me is Mobile App Development and Ethical Hacking. So, I started building my skill in these areas.</p>
+      <p>Also, football is one of my sports. So I kept the football theme for my portfolio.</p>
+    </div>
+  </div>
+  <!-- Footer Section -->
+  <footer class="footer">
+    <ul class="footer-nav">
+      <li><a href="stats.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p>&copy; 2025 Harshith H D. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
