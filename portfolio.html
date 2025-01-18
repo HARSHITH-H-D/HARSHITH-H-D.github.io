@@ -13,6 +13,7 @@
 
     body, html {
       height: 100%;
+      font-family: 'Courier New', Courier, monospace;
     }
 
     /* Full-screen GIF background */
@@ -24,180 +25,156 @@
       height: 100%;
       z-index: -1;
       background: url('Untitled design (1).gif') no-repeat center center;
-      background-size: cover; /* Makes the GIF cover the entire screen */
+      background-size: cover;
     }
 
     /* Content Overlay */
     .content {
-      position: relative;
-      z-index: 1;
-      color: white;
-      font-family: Arial, sans-serif;
       display: grid;
-      grid-template-columns: 1fr 2fr; /* Image takes 1/3, text takes 2/3 */
-      align-items: center; /* Aligns items vertically */
+      grid-template-columns: 1fr 2fr; /* Image 1/3, Text 2/3 */
+      align-items: center;
       height: 100%;
-      gap: 20px; /* Space between image and text */
-      padding: 0 20px; /* Add some padding to the container */
-      animation: fadeIn 1.5s ease-in-out; /* Smooth fade-in on page load */
+      gap: 20px;
+      padding: 20px;
+      color: white;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
       text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-      transition: transform 0.5s ease, color 0.5s ease; /* Smooth hover effect */
+      transition: transform 0.5s ease, color 0.5s ease;
     }
 
     h1:hover {
       color: #00ffc6;
-      transform: scale(1.1); /* Slight zoom on hover */
+      transform: scale(1.1);
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
       text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
-      transition: opacity 0.5s ease; /* Smooth fade-in effect */
     }
 
-    p:hover {
-      opacity: 0.8; /* Slight transparency on hover */
+    .image-left {
+      justify-self: center;
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .image-left:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+
+    .text-right {
+      justify-self: start;
     }
 
     .btn {
-      margin-top: 100px;
-      margin-bottom: auto;
       padding: 10px 20px;
       background: #ecf0ef;
       color: #1e1e1e;
       border: none;
       border-radius: 5px;
-      cursor:"apple.png";
+      cursor: pointer;
       font-size: 1rem;
       text-decoration: none;
-      transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover and press effects */
-      align-self: center;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-top: 20px;
     }
-    body {
-      cursor: url('apple.png'), auto; /* Custom cursor with auto fallback */
-    }
+
     .btn:hover {
       background: #009f86;
-      transform: translateY(-5px); /* Slight upward movement on hover */
+      transform: translateY(-5px);
     }
 
-    .image-left {
-      justify-self: center; /* Center the image in its grid cell */
-      transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth hover effect */
-      animation: slideInLeft 1.5s ease-in-out; /* Slide in from the left on page load */
-    }
-
-    .image-left:hover {
-      transform: scale(1.1); /* Zoom in on hover */
-      opacity: 0.9;
-    }
-
-    .text-right {
-      justify-self: start; /* Align text to the left within its grid cell */
-      animation: slideInRight 1.5s ease-in-out; /* Slide in from the right on page load */
-    }
-
-    /* Keyframes for page load animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideInLeft {
-      from {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-    
-  .image-button img {
-    border: 2px solid transparent; /* Add a border to simulate a button */
-    border-radius: 10px; /* Optional: Make it rounded */
-    transition: transform 0.2s, border-color 0.2s; /* Smooth hover effect */
-  }
-
-  .image-button img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-    border-color: #00ffc6; /* Add a border color on hover */
-  }
-
-    @keyframes slideInRight {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
     .footer {
-      background-color: #1e1e1e; /* Dark background */
-      color: white; /* Text color */
-      padding: 20px 0; /* Padding for the footer */
+      background-color: #1e1e1e;
+      color: white;
+      padding: 20px 0;
       text-align: center;
-      position: fixed; /* Stick to the bottom */
+      position: fixed;
       bottom: 0;
       width: 100%;
-      z-index: 1000; /* Ensure it's always on top */
-      box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+      z-index: 1000;
+      box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
     }
-    
+
     .footer-logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      text-decoration: none;
-      color: white;
-      width: 50px;
-      height: 50px;
+      width: 30px;
+      height: 30px;
     }
-    
-    .social-links {
+
+    .footer-container {
       display: flex;
-      gap: 15px; /* Space between social media icons */
+      justify-content: center;
+      gap: 15px;
     }
-    
-    .social-links a {
-      text-decoration: none;
-      color: white;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+
+    /* Watermark */
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.1;
+      z-index: -1;
+      pointer-events: none;
+      max-width: 50%;
+      height: auto;
     }
-    
-    .social-links img {
-      width: 25px;
-      height: 25px;
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .content {
+        grid-template-columns: 1fr; /* Stack elements vertically */
+        text-align: center; /* Center-align text for better readability */
+      }
+
+      .text-right {
+        justify-self: center;
+        padding: 20px;
+      }
     }
-    
-    .social-links a:hover img {
-      transform: scale(1.2); /* Zoom in on hover */
-      opacity: 0.8;
+
+    @media (max-width: 768px) {
+      .footer-logo {
+        width: 25px;
+        height: 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
     }
-.watermark {
-      position: fixed; /* Stays in the same place, even when scrolling */
-      top: 50%; /* Center vertically */
-      left: 50%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Adjust for proper centering */
-      opacity: 0.1; /* Transparent enough to not disturb content */
-      z-index: -1; /* Behind the main content */
-      pointer-events: none; /* Prevent interaction with the watermark */
+
+    @media (max-width: 480px) {
+      .content {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .footer-logo {
+        width: 20px;
+        height: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  
-  <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark" height="500" width="500">
+  <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark">
   <!-- Full-screen GIF background -->
   <div class="fullscreen-bg"></div>
 
@@ -205,33 +182,29 @@
   <div class="content">
     <!-- Image on the left -->
     <a href="stats.html">
-      <img src="custom_HARSHITH H D_fc25_download (3).png" alt="My image" class="image-left" height="500" width="500" > 
+      <img src="custom_HARSHITH H D_fc25_download (3).png" alt="My image" class="image-left">
     </a>
     <!-- Text on the right -->
     <div class="text-right">
       <h1>HARSHITH H D</h1>
       <p>App Developer | Ethical Hacker | Machine Learning Enthusiast</p>
-      
-      <p>NOTE:Click the photo for more information</p>
-      
-      
+      <p>NOTE: Click the photo for more information</p>
     </div>
-    
   </div>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
-      <a href="www.linkedin.com/in/harshith-h-d" target="_blank" class="footer-link">
+      <a href="www.linkedin.com/in/harshith-h-d" target="_blank">
         <img src="Linkedin-logo.png" alt="LinkedIn" class="footer-logo">
       </a>
-      <a href="https://www.instagram.com/harshith_h_d" target="_blank" class="footer-link">
-        <img src="instagram-logo.jpg" alt="Instagram" class="footer-logo">
+      <a href="https://www.instagram.com/harshith_h_d" target="_blank">
+        <img src="instagram-logo.png" alt="Instagram" class="footer-logo">
       </a>
-      <a href="https://github.com/HARSHITH-H-D" target="_blank" class="footer-link">
+      <a href="https://github.com/HARSHITH-H-D" target="_blank">
         <img src="github-logo.png" alt="GitHub" class="footer-logo">
       </a>
     </div>
   </footer>
-  
-
 </body>
 </html>

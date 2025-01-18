@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             background: #f9f9f9;
             color: #333;
             line-height: 1.5;
@@ -26,7 +26,7 @@
         .header {
             background-color: #1e1e1e;
             color: white;
-            padding: 15px 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -38,17 +38,17 @@
         }
 
         .header-logo {
-            height: 50px;
+            height: 40px;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         .social-links img {
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
@@ -59,8 +59,8 @@
 
         /* Content Container */
         .main-content {
-            flex: 1; /* Makes content expand to fill the available space */
-            margin-top: 80px; /* Leave space for the header */
+            flex: 1;
+            margin-top: 80px;
             padding: 20px;
         }
 
@@ -83,8 +83,8 @@
         .project-box:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-            background:white;
-            color:black;
+            background: white;
+            color: black;
         }
 
         .project-title {
@@ -101,7 +101,7 @@
 
         .github-link {
             text-decoration: none;
-            color: rgb(0, 0, 0);
+            color: black;
             font-size: 1rem;
             font-weight: bold;
             transition: color 0.3s ease;
@@ -115,7 +115,7 @@
         .footer {
             background-color: #1e1e1e;
             color: white;
-            padding: 20px 0;
+            padding: 10px 0;
             text-align: center;
             box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -123,14 +123,14 @@
         .footer-nav {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 15px;
             list-style: none;
         }
 
         .footer-nav a {
             text-decoration: none;
             color: white;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
@@ -141,41 +141,115 @@
 
         .footer p {
             margin-top: 10px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.8;
         }
-        .watermark {
-      position: fixed; /* Stays in the same place, even when scrolling */
-      top: 50%; /* Center vertically */
-      left: 50%; /* Center horizontally */
-      transform: translate(-50%, -50%); /* Adjust for proper centering */
-      opacity: 0.1; /* Transparent enough to not disturb content */
-      z-index: -1; /* Behind the main content */
-      pointer-events: none; /* Prevent interaction with the watermark */
-    }
-    /* Full-screen GIF background */
-    .fullscreen-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
-      background-size: cover;
-    }
-    h1 {
-      
-      font-size: 3rem;
-      transition: transform 0.5s ease, color 0.5s ease;
-       /* Smooth hover effect */
-    }
 
-    h1:hover {
-      color: #00ffc6;
-      transform: scale(1.1); /* Slight zoom on hover */
-    }
+        /* Full-screen GIF background */
+        .fullscreen-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            z-index: -1;
+            pointer-events: none;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1:hover {
+            color: #00ffc6;
+            transform: scale(1.1);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .header-logo {
+                height: 30px;
+            }
+
+            .social-links {
+                margin-top: 10px;
+                gap: 5px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .project-title {
+                font-size: 1.25rem;
+            }
+
+            .project-summary {
+                font-size: 0.9rem;
+            }
+
+            .github-link {
+                font-size: 0.9rem;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer p {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .project-box {
+                padding: 15px;
+            }
+
+            .project-title {
+                font-size: 1.1rem;
+            }
+
+            .project-summary {
+                font-size: 0.8rem;
+            }
+
+            .github-link {
+                font-size: 0.8rem;
+            }
+
+            .footer-nav a {
+                font-size: 0.8rem;
+            }
+        }
     </style>
+</head>
+<body>
 </head>
 <body>
     <header class="header">
@@ -186,7 +260,7 @@
                 <img src="Linkedin-logo.png" alt="LinkedIn">
             </a>
             <a href="https://www.instagram.com/harshith_h_d" target="_blank">
-                <img src="instagram-logo.jpg" alt="Instagram">
+                <img src="instagram-logo.png" alt="Instagram">
             </a>
             <a href="https://github.com/HARSHITH-H-D" target="_blank">
                 <img src="github-logo.png" alt="GitHub">
@@ -256,7 +330,7 @@
           <div class="project-box">
             <div class="project-title">Developing the profile 360 application</div>
             <div class="project-summary">
-              I need toa adding many features like adding chat with other people and better authentication mechanism and many more...
+              I need to adding many features like adding chat with other people and better authentication mechanism and many more...
             </div>
             
         </div>
