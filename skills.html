@@ -1,272 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Portfolio</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Scrollable Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9fafb;
+        }
 
-    body, html {
-      height: 100%;
-      font-family: Arial, sans-serif;
-    }
+        .box-description, .tool-description {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 0.9rem;
+            padding: 8px;
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+        }
 
-    .watermark {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0.1;
-      z-index: -1;
-      pointer-events: none;
-      max-width: 70%;
-    }
+        .box:hover .box-description, .tool:hover .tool-description {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
 
-    .fullscreen-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
-      background-size: cover;
-    }
+        .fullscreen-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
+            background-size: cover;
+        }
 
-    .header {
-      background-color: #1e1e1e;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .header-logo {
-      width: 40px;
-      height: 40px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 10px;
-    }
-
-    .social-links img {
-      width: 20px;
-      height: 20px;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .social-links img:hover {
-      transform: scale(1.2);
-      opacity: 0.8;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      color: white;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      margin-top: 80px; /* Offset for fixed header */
-    }
-
-    .image-left {
-      justify-self: center;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .image-left:hover {
-      transform: scale(1.1);
-      opacity: 0.9;
-    }
-
-    .text-right {
-      justify-self: start;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-    }
-
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-top: 10px;
-    }
-
-    .footer {
-      background-color: #1e1e1e;
-      color: white;
-      padding: 15px 0;
-      text-align: center;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-nav a {
-      text-decoration: none;
-      color: white;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
-    }
-
-    .footer-nav a:hover {
-      color: #32dd49;
-    }
-
-    .footer p {
-      font-size: 0.8rem;
-      opacity: 0.8;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .text-right {
-        justify-self: center;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
-
-      .image-left {
-        max-width: 80%;
-      }
-
-      .footer-nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 10px;
-      }
-
-      .header-logo {
-        width: 30px;
-        height: 30px;
-      }
-
-      .social-links img {
-        width: 18px;
-        height: 18px;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 0.8rem;
-      }
-
-      .content {
-        padding: 10px;
-        gap: 10px;
-      }
-
-      .footer-nav {
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .footer {
-        padding: 10px 0;
-      }
-    }
-  </style>
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-  <header class="header">
-    <img src="HARSHITH H D (4).png" alt="Logo" class="header-logo">
-    <h2>Harshith H D</h2>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/harshith-h-d" target="_blank">
-        <img src="Linkedin-logo.png" alt="LinkedIn">
-      </a>
-      <a href="https://www.instagram.com/harshith_h_d" target="_blank">
-        <img src="instagram-logo.png" alt="Instagram">
-      </a>
-      <a href="https://github.com/HARSHITH-H-D" target="_blank">
-        <img src="github-logo.png" alt="GitHub">
-      </a>
+    <header class="header bg-gray-900 text-white fixed top-0 w-full flex justify-between items-center px-5 py-3 shadow-md z-10">
+        <div class="flex items-center space-x-3">
+            <img src="HARSHITH H D (4).png" alt="Logo" class="header-logo w-12 h-12">
+            <h2 class="text-lg font-semibold">Harshith H D</h2>
+        </div>
+        <div class="social-links flex space-x-4">
+            <a href="https://www.linkedin.com/in/harshith-h-d" target="_blank">
+                <img src="Linkedin-logo.png" alt="LinkedIn" class="w-6 h-6">
+            </a>
+            <a href="https://www.instagram.com/harshith_h_d" target="_blank">
+                <img src="instagram-logo.jpg" alt="Instagram" class="w-6 h-6">
+            </a>
+            <a href="https://github.com/HARSHITH-H-D" target="_blank">
+                <img src="github-logo.png" alt="GitHub" class="w-6 h-6">
+            </a>
+        </div>
+    </header>
+
+    <div class="fullscreen-bg"></div>
+    <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark w-96 h-96">
+
+    <h1 class="text-2xl font-bold text-center mt-28 mb-5">Skills</h1>
+
+    <div class="scroll-container flex flex-wrap justify-center gap-5 px-5">
+        <div class="box w-48 h-36 bg-green-500 text-white flex justify-center items-center rounded-lg relative hover:transform hover:-translate-y-2 hover:shadow-lg transition">
+            Languages
+            <div class="box-description">Programming languages I am proficient in: Python, Java, C, C++.</div>
+        </div>
+        <div class="box w-48 h-36 bg-green-500 text-white flex justify-center items-center rounded-lg relative hover:transform hover:-translate-y-2 hover:shadow-lg transition">
+            Education
+            <div class="box-description">B.E. Computer Science and Engineering.</div>
+        </div>
+        <div class="box w-48 h-36 bg-green-500 text-white flex justify-center items-center rounded-lg relative hover:transform hover:-translate-y-2 hover:shadow-lg transition">
+            Projects
+            <div class="box-description">Worked on more than 5 projects. Detailed descriptions are in another page.</div>
+        </div>
+        <div class="box w-48 h-36 bg-green-500 text-white flex justify-center items-center rounded-lg relative hover:transform hover:-translate-y-2 hover:shadow-lg transition">
+            Domains
+            <div class="box-description">Ethical Hacking, Mobile Application Development, Exploratory Data Analysis, Machine Learning.</div>
+        </div>
     </div>
-  </header>
 
-  <div class="fullscreen-bg"></div>
-  <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark">
-
-  <div class="content">
-    <img id="clickableImage" src="custom_HARSHITH H D_fc25_download (3).png" alt="Image" class="image-left">
-    <script>
-      document.getElementById('clickableImage').addEventListener('mouseover', function() {
-        this.src = 'hd.png';
-      });
-      document.getElementById('clickableImage').addEventListener('mouseout', function() {
-        this.src = 'custom_HARSHITH H D_fc25_download (3).png';
-      });
-    </script>
-
-    <div class="text-right">
-      <h1>ABOUT</h1>
-      <p>I'm HARSHITH.H.D, an Engineering Student at PMC Tech affiliated with ANNA University.</p>
-      <p>I started my journey in Udemy, completing my first course on C++ which introduced me to OOP. I later completed a course on Ethical Hacking in Rinex.</p>
-      <p>I’ve also completed internships in Upskill Academy focusing on Python and Core Java.</p>
-      <p>My interests are in Mobile App Development and Ethical Hacking, and I’m actively building my skills in these areas.</p>
+    <div class="tools-container mt-10 text-center">
+        <h2 class="tools-title text-xl font-bold mb-5">Tools I Use</h2>
+        <div class="tools-list flex flex-wrap justify-center gap-5">
+            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+                <img src="download (1).png" alt="VS Code" class="w-10">
+                <div class="tool-description">VS Code</div>
+            </div>
+            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+                <img src="python.png" alt="Python" class="w-10">
+                <div class="tool-description">Python</div>
+            </div>
+            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+                <img src="firebase.png" alt="Firebase" class="w-10">
+                <div class="tool-description">Firebase</div>
+            </div>
+            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+                <img src="android.png" alt="Android" class="w-10">
+                <div class="tool-description">Android</div>
+            </div>
+            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+                <img src="java.png" alt="Java" class="w-10">
+                <div class="tool-description">Java</div>
+            </div>
+            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+                <img src="kali.png" alt="Kali" class="w-10">
+                <div class="tool-description">Kali</div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <footer class="footer">
-    <ul class="footer-nav">
-      <li><a href="stats.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <p>&copy; 2025 Harshith H D. All Rights Reserved.</p>
-  </footer>
+    <footer class="footer bg-gray-900 text-white mt-10 py-5 text-center fixed bottom-0 w-full shadow-md">
+        <ul class="footer-nav flex justify-center space-x-8">
+            <li><a href="stats.html" class="hover:text-green-400">About</a></li>
+            <li><a href="projects.html" class="hover:text-green-400">Projects</a></li>
+            <li><a href="skills.html" class="hover:text-green-400">Skills</a></li>
+            <li><a href="contact.html" class="hover:text-green-400">Contact</a></li>
+        </ul>
+        <p class="mt-3 text-sm opacity-75">&copy; 2025 Harshith H D. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>

@@ -13,13 +13,13 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             background: #f9f9f9;
             color: #333;
             line-height: 1.5;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ensure full height */
+            min-height: 100vh;
         }
 
         .header {
@@ -34,11 +34,12 @@
             width: 100%;
             z-index: 1000;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            height: 80px; /* Consistent header height */
+            height: 80px;
         }
 
         .header-logo {
             height: 50px;
+            width: auto;
         }
 
         .social-links {
@@ -55,39 +56,6 @@
         .social-links img:hover {
             transform: scale(1.2);
             opacity: 0.8;
-        }
-
-        .container {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-            margin: 100px auto 20px auto; /* Space for header */
-            max-width: 600px;
-            flex-grow: 1; /* Takes up remaining space between header and footer */
-        }
-
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-        }
-
-        input[type=submit] {
-            background-color: #04AA6D;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        input[type=submit]:hover {
-            background-color: #45a049;
         }
 
         .fullscreen-bg {
@@ -109,10 +77,46 @@
             opacity: 0.1;
             z-index: -1;
             pointer-events: none;
+            max-width: 80%;
+            height: auto;
         }
 
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin: 100px auto 20px auto;
+            max-width: 600px;
+            width: 90%; /* Adjust for smaller screens */
+            flex-grow: 1;
+        }
+
+        input[type=text],input[type=email], textarea {
+            font-family: 'Courier New', Courier, monospace;
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */ 
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+button[type=submit] {
+    font-family: 'Courier New', Courier, monospace;
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            text-align: center;
             transition: transform 0.5s ease, color 0.5s ease;
         }
 
@@ -127,13 +131,14 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: auto; /* Pushes the footer to the bottom */
+            margin-top: auto;
         }
 
         .footer-nav {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
             list-style: none;
         }
 
@@ -154,6 +159,51 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+            }
+
+            .social-links img {
+                width: 20px;
+                height: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                margin-top: 120px; /* Adjust for header height */
+            }
+
+            .footer-nav {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h2 {
+                font-size: 1rem;
+            }
+
+            .footer-nav a {
+                font-size: 0.8rem;
+            }
+
+            input[type=submit] {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -173,33 +223,17 @@
         </div>
     </header>
     <div class="fullscreen-bg"></div>
-    <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark" width="400" height="400">
+    <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark">
     <div class="container">
-        <form action="https://formsubmit.co/hdharshith7@email.com" method="POST">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-            <label for="country">Country</label>
-            <select id="country" name="country">
-                <option value="india">India</option>
-                <option value="russia">Russia</option>
-                <option value="china">China</option>
-                <option value="japan">Japan</option>
-                <option value="germany">Germany</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="canada">Canada</option>
-                <option value="usa">USA</option>
-            </select>
-
-            <label for="subject">Subject</label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-
-            <input type="submit" value="Submit">
-        </form>
+        <form action="https://formsubmit.co/hdharshith7@gmail.com" method="POST">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email Address">
+            <textarea name="message" placeholder="Description of order"></textarea>
+            <input type="hidden" name="_autoresponse" value="Thank you for your response.Yours, Harshith H D">
+            <button type="submit">Send</button>
+       </form>
+    
     </div>
     <footer class="footer">
         <ul class="footer-nav">
