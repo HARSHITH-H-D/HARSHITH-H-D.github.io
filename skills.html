@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills</title>
+    <title>Centered Scrollable Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -15,6 +15,7 @@
             align-items: center;
             min-height: 100vh;
             background-color: #f9fafb;
+            padding-bottom: 80px; /* Prevent footer overlap */
         }
 
         .box-description, .tool-description {
@@ -33,7 +34,7 @@
             transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         }
 
-        .box:hover .box-description, .tool:hover .tool-description {
+        .box:hover .box-description, .tool:active .tool-description {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -59,24 +60,20 @@
             z-index: -1;
             pointer-events: none;
         }
-        h1:hover {
-            color: #00ffc6;
-            transform: scale(1.1);
-        } 
     </style>
 </head>
 <body>
     <header class="header bg-gray-900 text-white fixed top-0 w-full flex justify-between items-center px-5 py-3 shadow-md z-10">
         <div class="flex items-center space-x-3">
             <img src="HARSHITH H D (4).png" alt="Logo" class="header-logo w-12 h-12">
+            <h2 class="text-lg font-semibold">Harshith H D</h2>
         </div>
-        <h2 class="text-lg font-semibold text-center absolute left-1/2 transform -translate-x-1/2">Harshith H D</h2>
         <div class="social-links flex space-x-4">
             <a href="https://www.linkedin.com/in/harshith-h-d" target="_blank">
                 <img src="Linkedin-logo.png" alt="LinkedIn" class="w-6 h-6">
             </a>
             <a href="https://www.instagram.com/harshith_h_d" target="_blank">
-                <img src="instagram-logo.png" alt="Instagram" class="w-6 h-6">
+                <img src="instagram-logo.jpg" alt="Instagram" class="w-6 h-6">
             </a>
             <a href="https://github.com/HARSHITH-H-D" target="_blank">
                 <img src="github-logo.png" alt="GitHub" class="w-6 h-6">
@@ -108,30 +105,30 @@
         </div>
     </div>
 
-    <div class="tools-container mt-10 text-center">
+    <div class="tools-container mt-10 text-center pb-20">
         <h2 class="tools-title text-xl font-bold mb-5">Tools I Use</h2>
-        <div class="tools-list flex flex-wrap justify-center gap-5">
-            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+        <div class="tools-list grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+            <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="download (1).png" alt="VS Code" class="w-10">
                 <div class="tool-description">VS Code</div>
             </div>
-            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+            <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="python.png" alt="Python" class="w-10">
                 <div class="tool-description">Python</div>
             </div>
-            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+            <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="firebase.png" alt="Firebase" class="w-10">
                 <div class="tool-description">Firebase</div>
             </div>
-            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+            <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="android.png" alt="Android" class="w-10">
                 <div class="tool-description">Android</div>
             </div>
-            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+            <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="java.png" alt="Java" class="w-10">
                 <div class="tool-description">Java</div>
             </div>
-            <div class="tool w-20 h-20 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
+            <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="kali.png" alt="Kali" class="w-10">
                 <div class="tool-description">Kali</div>
             </div>
@@ -139,13 +136,7 @@
     </div>
 
     <footer class="footer bg-gray-900 text-white mt-10 py-5 text-center fixed bottom-0 w-full shadow-md">
-        <ul class="footer-nav flex justify-center space-x-8">
-            <li><a href="stats.html" class="hover:text-green-400">About</a></li>
-            <li><a href="projects.html" class="hover:text-green-400">Projects</a></li>
-            <li><a href="skills.html" class="hover:text-green-400">Skills</a></li>
-            <li><a href="contact.html" class="hover:text-green-400">Contact</a></li>
-        </ul>
-        <p class="mt-3 text-sm opacity-75">&copy; 2025 Harshith H D. All Rights Reserved.</p>
+        <p class="text-sm opacity-75">&copy; 2025 Harshith H D. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
