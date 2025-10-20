@@ -51,7 +51,7 @@
             padding-bottom: 80px; /* Prevent footer overlap */
         }
 
-        .box-description, .tool-description {
+        .box-description {
             font-family:'Courier New', Courier, monospace;
             position: absolute;
             bottom: 10px;
@@ -68,11 +68,33 @@
             transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         }
 
-        .box:hover .box-description, .tool:active .tool-description {
+        .box:hover .box-description{
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
+        .tool-description {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 5px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.tool:hover .tool-description {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
 
         .fullscreen-bg {
             position: fixed;
@@ -104,6 +126,24 @@
             color: #00ffc6;
             transform: scale(1.1);
         } 
+        h2 {
+            
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h2:hover {
+            color: #00ffc6;
+            transform: scale(1.1);
+        }
+        .header2 {
+            
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-style: normal;
+        }
+
         .footer {
             background-color: #1e1e1e;
             font-family: 'Courier New', Courier, monospace;
@@ -228,7 +268,7 @@
     <header class="header ">
         
             <img src="HARSHITH H D (4).png" alt="Logo" class="header-logo ">
-            <h2 class="text-lg font-semibold">Harshith H D</h2>
+            <h2 class="header2">Harshith H D</h2>
         </div>
         <div class="social-links ">
             <a href="https://www.linkedin.com/in/harshith-h-d" target="_blank">
@@ -263,7 +303,7 @@
         </div>
         <div class="box w-48 h-36 bg-green-500 text-white flex justify-center items-center rounded-lg relative hover:transform hover:-translate-y-2 hover:shadow-lg transition">
             Domains
-            <div class="box-description">Ethical Hacking, Mobile Application Development, Exploratory Data Analysis, Machine Learning.</div>
+            <div class="box-description">Ethical Hacking, Mobile Application Development, Exploratory Data Analysis, Machine Learning and Software Tester.</div>
         </div>
     </div>
 
@@ -284,7 +324,7 @@
             </div>
             <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="android.png" alt="Android" class="w-10">
-                <div class="tool-description">Android</div>
+                <div class="tool-description">Android Studio</div>
             </div>
             <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="java.png" alt="Java" class="w-10">
@@ -292,7 +332,7 @@
             </div>
             <div class="tool w-16 h-16 flex justify-center items-center bg-green-500 text-white rounded-lg relative hover:transform hover:scale-110 transition">
                 <img src="kali.png" alt="Kali" class="w-10">
-                <div class="tool-description">Kali</div>
+                <div class="tool-description">Kali Linus</div>
             </div>
         </div>
     </div>
