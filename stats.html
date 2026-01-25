@@ -1,44 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Stats</title>
 
-    body, html {
-      height: 100%;
-      font-family: 'Courier New', Courier, monospace;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  padding-bottom: 90px;
+}
 
-    .watermark {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0.1;
-      z-index: -1;
-      pointer-events: none;
-      max-width: 70%;
-    }
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
+  background-size: cover;
+  z-index: -1;
+}
 
-    .fullscreen-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: url('541dda32-137b-4482-8133-8463a2256d35.jpg') no-repeat center center;
-      background-size: cover;
-    }
-
-    .header {
+/* ---------- HEADER ---------- */
+.header {
       
       background-color: #1e1e1e;
       color: white;
@@ -73,184 +60,141 @@
       transform: scale(1.2);
       opacity: 0.8;
     }
+.social-links img:hover { transform: scale(1.2); }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      color: white;
-      font-family: 'Courier New', Courier, monospace;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      margin-top: 80px; /* Offset for fixed header */
-    }
+/* ---------- MAIN ---------- */
+h1 {
+  margin-top: 120px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+h1:hover { color: #00ffc6; }
 
-    .image-left {
-      justify-self: center;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      max-width: 100%;
-      height: auto;
-    }
 
-    .image-left:hover {
-      transform: scale(1.1);
-      opacity: 0.9;
-    }
+.ovr {
+  text-align: center;
+  font-size: 3.2rem;
+  color: #00ffc6;
+  margin-bottom: 30px;
+}
 
-    .text-right {
-      justify-self: start;
-    }
+/* Layout */
+.stats-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  padding: 0 40px;
+  align-items: center;
+}
 
-    h1 {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 2.5rem;
-      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
-    }
+/* Card Image */
+.card-img {
+  max-width: 100%;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
 
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-top: 10px;
-      font-family: 'Courier New', Courier, monospace;
-    }
-    h2 {
-            
-            text-align: center;
-            margin-bottom: 20px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        h2:hover {
-            color: #00ffc6;
-            transform: scale(1.1);
-        }
-        .header2 {
-            
-            text-align: center;
-            margin-bottom: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            font-style: normal;
-        }
+.card-img:hover { transform: scale(1.05); }
 
-    .footer {
-      background-color: #1e1e1e;
-      color: white;
-      font-family: 'Courier New', Courier, monospace;
-      padding: 15px 0;
-      text-align: center;
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.stat-box {
+  background: rgba(30,30,30,0.92);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 0 12px rgba(0,255,198,0.15);
+}
+
+.stat-title {
+  color: #00ffc6;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.stat-desc {
+  font-size: 0.8rem;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+.watermark {
       position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 1000;
-      box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.1;
+      z-index: -1;
+      pointer-events: none;
+      max-width: 70%;
     }
+/* ---------- FOOTER ---------- */
+.footer {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
-    .footer-nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      list-style: none;
-      padding: 0;
-    }
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
 
-    .footer-nav a {
-      text-decoration: none;
-      color: white;
-      font-size: 0.9rem;
-      transition: color 0.3s ease;
-    }
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.footer-nav a:hover { color: #32dd49; }
 
-    .footer-nav a:hover {
-      color: #32dd49;
-    }
+.footer p {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
 
-    .footer p {
-      font-size: 0.8rem;
-      opacity: 0.8;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .text-right {
-        justify-self: center;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 0.9rem;
-      }
-
-      .image-left {
-        max-width: 80%;
-      }
-
-      .footer-nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 10px;
-      }
-
-      .header-logo {
-        width: 30px;
-        height: 30px;
-      }
-
-      .social-links img {
-        width: 18px;
-        height: 18px;
-      }
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 0.8rem;
-      }
-
-      .content {
-        padding: 10px;
-        gap: 10px;
-      }
-
-      .footer-nav {
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .footer {
-        padding: 10px 0;
-      }
-    }
-  </style>
+/* Responsive */
+@media (max-width: 900px) {
+  .stats-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
+
 <body>
-  <header class="header">
+
+<header class="header">
     <img src="HARSHITH H D (4).png" alt="Logo" class="header-logo">
     <h2 class="header2">Harshith H D</h2>
     <div class="social-links">
       <a href="https://www.linkedin.com/in/harshith-h-d" target="_blank">
         <img src="Linkedin-logo.png" alt="LinkedIn">
-      </a>
-      <a href="https://www.instagram.com/harshith_h_d" target="_blank">
-        <img src="instagram-logo.png" alt="Instagram">
       </a>
       <a href="https://github.com/HARSHITH-H-D" target="_blank">
         <img src="github-logo.png" alt="GitHub">
@@ -258,37 +202,112 @@
     </div>
   </header>
 
-  <div class="fullscreen-bg"></div>
-  <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark">
+<div class="fullscreen-bg"></div>
+ <img src="HARSHITH H D (4).png" alt="Watermark" class="watermark">
+<h1>PLAYER STATS</h1>
+<div class="ovr"><span id="ovr">0</span> OVR</div>
 
-  <div class="content">
-    <img id="clickableImage" src="custom_HARSHITH H D_fc25_download (3).png" alt="Image" class="image-left">
-    <script>
-      document.getElementById('clickableImage').addEventListener('mouseover', function() {
-        this.src = 'Profile photo.jpg';
-      });
-      document.getElementById('clickableImage').addEventListener('mouseout', function() {
-        this.src = 'custom_HARSHITH H D_fc25_download (3).png';
-      });
-    </script>
+<div class="stats-wrapper">
 
-    <div class="text-right">
-      <h1>ABOUT</h1>
-      <p>I'm HARSHITH.H.D, an Engineering Student at PMC Tech affiliated with ANNA University.</p>
-      <p>I started my journey in Udemy, completing my first course on C++ which introduced me to OOP. I later completed a course on Ethical Hacking in Rinex.</p>
-      <p>I’ve also completed internships in Upskill Academy focusing on Python and Core Java.</p>
-      <p>My interests are in Mobile App Development and Ethical Hacking, and I’m actively building my skills in these areas.</p>
+  <!-- Card -->
+  <img id="clickableImage"
+     src="custom_HARSHITH H D_fc25_download (3).png"
+     class="card-img"
+     alt="Player Card">
+
+<script>
+  const cardImg = document.getElementById('clickableImage');
+
+  cardImg.addEventListener('mouseenter', () => {
+    cardImg.src = 'dp1.png';
+  });
+
+  cardImg.addEventListener('mouseleave', () => {
+    cardImg.src = 'custom_HARSHITH H D_fc25_download (3).png';
+  });
+</script>
+
+
+  <!-- Stats -->
+  <div class="stats-grid">
+
+    <div class="stat-box">
+      <div class="stat-title">PACE</div>
+      <div class="stat-value">88</div>
+      <div class="stat-desc">Fast learning and rapid adaptability.</div>
     </div>
-  </div>
 
-  <footer class="footer">
-    <ul class="footer-nav">
-      <li><a href="stats.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="skills.html">Skills</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <p>&copy; 2026 Harshith H D. All Rights Reserved.</p>
-  </footer>
+    <div class="stat-box">
+      <div class="stat-title">SHOOTING</div>
+      <div class="stat-value">90</div>
+      <div class="stat-desc">High accuracy in coding and AI execution.</div>
+    </div>
+
+    <div class="stat-box">
+      <div class="stat-title">PASSING</div>
+      <div class="stat-value">89</div>
+      <div class="stat-desc">Smooth system and data integration.</div>
+    </div>
+
+    <div class="stat-box">
+      <div class="stat-title">DRIBBLING</div>
+      <div class="stat-value">92</div>
+      <div class="stat-desc">Handles complexity with precision.</div>
+    </div>
+
+    <div class="stat-box">
+      <div class="stat-title">DEFENSE</div>
+      <div class="stat-value">91</div>
+      <div class="stat-desc">Secure coding and OWASP knowledge.</div>
+    </div>
+
+    <div class="stat-box">
+      <div class="stat-title">VISION</div>
+      <div class="stat-value">93</div>
+      <div class="stat-desc">End-to-end architecture mindset.</div>
+    </div>
+
+    <div class="stat-box">
+      <div class="stat-title">PHYSICAL</div>
+      <div class="stat-value">87</div>
+      <div class="stat-desc">Consistency under pressure.</div>
+    </div>
+
+    <div class="stat-box">
+      <div class="stat-title">COMPOSURE</div>
+      <div class="stat-value">89</div>
+      <div class="stat-desc">Calm and focused problem solving.</div>
+    </div>
+
+    <div class="stat-box">
+      <div class="stat-title">WORK RATE</div>
+      <div class="stat-value">HIGH</div>
+      <div class="stat-desc">High / High performance mindset.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <ul class="footer-nav">
+    <li><a href="stats.html">Stats</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p>&copy; 2026 Harshith H D. All Rights Reserved.</p>
+</footer>
+
+<script>
+let ovr = 0;
+const target = 98;
+const el = document.getElementById("ovr");
+
+const interval = setInterval(() => {
+  if (ovr >= target) clearInterval(interval);
+  else el.textContent = ++ovr;
+}, 10);
+</script>
+
 </body>
 </html>
