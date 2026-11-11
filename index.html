@@ -267,6 +267,28 @@
     .pub-box p { color: #8892b0; font-size: 0.85rem; line-height: 1.7; }
     .pub-journal { font-family: 'Share Tech Mono', monospace; font-size: 0.7rem; color: var(--green); margin-top: 10px; letter-spacing: 0.1em; }
 
+
+    /* EXPERIENCE TIMELINE */
+    .timeline { position: relative; padding-left: 34px; max-width: 980px; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--green), var(--border), transparent); }
+    .exp-item { position: relative; margin-bottom: 28px; }
+    .exp-item::before { content: ''; position: absolute; left: -34px; top: 26px; width: 15px; height: 15px; border-radius: 50%; background: var(--dark); border: 2px solid var(--green); }
+    .exp-item.current::before { background: var(--green); box-shadow: 0 0 0 4px rgba(0,255,136,0.15), 0 0 18px rgba(0,255,136,0.6); animation: pulseAnim 2s infinite; }
+    .exp-card { border: 1px solid var(--border); background: var(--panel); padding: 28px; position: relative; overflow: hidden; transition: all 0.4s; }
+    .exp-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--green); transition: height 0.4s; }
+    .exp-card:hover::before { height: 100%; }
+    .exp-card:hover { border-color: rgba(0,255,136,0.4); background: rgba(0,255,136,0.08); transform: translateX(6px); }
+    .exp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+    .exp-role { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--green); letter-spacing: 0.04em; line-height: 1.1; }
+    .exp-date { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.12em; border: 1px solid rgba(0,229,255,0.3); padding: 4px 10px; white-space: nowrap; }
+    .exp-date.live { color: var(--green); border-color: var(--green); background: rgba(0,255,136,0.08); }
+    .exp-company { font-size: 1.05rem; font-weight: 700; color: white; letter-spacing: 0.03em; }
+    .exp-project { font-family: 'Share Tech Mono', monospace; font-size: 0.72rem; color: #8892b0; letter-spacing: 0.1em; margin-top: 4px; margin-bottom: 16px; }
+    .exp-list { list-style: none; }
+    .exp-list li { position: relative; padding-left: 22px; margin-bottom: 9px; font-size: 0.97rem; color: #8892b0; line-height: 1.65; }
+    .exp-list li::before { content: '>'; position: absolute; left: 0; color: var(--green); font-family: 'Share Tech Mono', monospace; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+
     /* ROLES */
     .roles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; }
     .role-card { padding: 28px; border: 1px solid var(--border); background: var(--panel); position: relative; overflow: hidden; transition: all 0.4s; }
@@ -418,11 +440,12 @@
   <a href="#top" class="nav-logo">HHD<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#roles">Roles</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="Resume.pdf" target="_blank">Resume</a></li>
+    <li><a href="QA_Resume.pdf" target="_blank">Resume</a></li>
   </ul>
 </nav>
 
@@ -448,7 +471,7 @@
   <div class="stat-bar">
     <div class="stat-item"><span class="stat-num">7+</span><span class="stat-label">PROJECTS</span></div>
     <div class="stat-sep"></div>
-    <div class="stat-item"><span class="stat-num">2</span><span class="stat-label">INTERNSHIPS</span></div>
+    <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">INTERNSHIPS</span></div>
     <div class="stat-sep"></div>
     <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">PUBLICATION</span></div>
     <div class="stat-sep"></div>
@@ -501,7 +524,7 @@
     </div>
     <div class="about-text">
       <h3>CS Undergraduate &middot; Security Researcher &middot; Builder</h3>
-      <p>I'm a Computer Science undergraduate from Hosur, Tamil Nadu, with hands-on experience across software testing, cybersecurity, AI/ML, and mobile development. Currently training at QSpiders, BTM, deepening automation testing skills with Selenium.</p>
+      <p>I'm a Computer Science undergraduate from Hosur, Tamil Nadu, with hands-on experience across software testing, cybersecurity, AI/ML, and mobile development. Currently working as an L1 Tester Intern at HARMAN on the Toyota DCM24 TCU project, and training at QSpiders, BTM, deepening automation testing skills with Selenium.</p>
       <p>I published a research paper in IRJCS (Scopus-indexed category) on football player scouting using cosine similarity and Random Forest models. Also secured 2nd place in a paper presentation on AI-based crop detection using YOLOv8.</p>
       <p>When I'm not breaking code (ethically), I'm building it &mdash; from Android apps to football analytics platforms powered by real-time AI.</p>
       <div class="about-info">
@@ -526,10 +549,95 @@
 
 <div class="divider"></div>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <p class="section-label">// 02 &mdash; CAREER LOG</p>
+    <h2 class="section-title">EXPERIENCE</h2>
+  </div>
+
+  <div class="timeline reveal">
+
+    <div class="exp-item current">
+      <div class="exp-card">
+        <div class="exp-head">
+          <div class="exp-role">L1 Tester Intern</div>
+          <span class="exp-date live">&#9679; ONGOING</span>
+        </div>
+        <div class="exp-company">HARMAN International India Pvt. Ltd.</div>
+        <div class="exp-project">PROJECT: TOYOTA DCM24 &mdash; TELEMATICS CONTROL UNIT (TCU)</div>
+        <ul class="exp-list">
+          <li>Working as part of the Testing Team on the Toyota DCM24 Telematics Control Unit (TCU) project, supporting software testing and validation activities.</li>
+          <li>Gained hands-on exposure to Linux OS for test execution, system monitoring, and troubleshooting activities.</li>
+          <li>Worked with API and DCM communication concepts to understand system-level interactions and data exchange.</li>
+          <li>Supported data collection and analysis to examine system behaviour and identify unexpected test results.</li>
+          <li>Assisted in validating system outputs against expected behaviour and identifying potential software defects.</li>
+          <li>Communicated identified software bugs and technical observations to developers for further investigation.</li>
+          <li>Collaborated with team members and suggested process improvements to support effective testing activities.</li>
+        </ul>
+        <div class="exp-tags"><span class="role-tag">LINUX</span><span class="role-tag">TCU / TELEMATICS</span><span class="role-tag">API TESTING</span><span class="role-tag">DEFECT REPORTING</span><span class="role-tag">VALIDATION</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-head">
+          <div class="exp-role">Software Testing Trainee</div>
+          <span class="exp-date">DEC 2025 &ndash; PRESENT</span>
+        </div>
+        <div class="exp-company">QSpiders, BTM</div>
+        <div class="exp-project">&nbsp;</div>
+        <ul class="exp-list">
+          <li>Designed and executed manual test cases for web applications.</li>
+          <li>Performed SQL-based database testing and data validation.</li>
+          <li>Automated test scenarios using Selenium with Python.</li>
+          <li>Documented defects and maintained structured bug reports.</li>
+        </ul>
+        <div class="exp-tags"><span class="role-tag">SELENIUM</span><span class="role-tag">PYTHON</span><span class="role-tag">SQL</span><span class="role-tag">MANUAL TESTING</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-head">
+          <div class="exp-role">Software Testing Intern</div>
+          <span class="exp-date">OCT 2025 &ndash; NOV 2025</span>
+        </div>
+        <div class="exp-company">Besant Technologies (Virtual)</div>
+        <div class="exp-project">&nbsp;</div>
+        <ul class="exp-list">
+          <li>Executed manual and automation test cases for web applications.</li>
+          <li>Identified defects, performed automation tests, and validated fixes.</li>
+          <li>Gained practical exposure to SDLC and QA best practices.</li>
+        </ul>
+        <div class="exp-tags"><span class="role-tag">AUTOMATION</span><span class="role-tag">SDLC</span><span class="role-tag">QA</span></div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-card">
+        <div class="exp-head">
+          <div class="exp-role">Python Developer Intern</div>
+          <span class="exp-date">FEB 2024 &ndash; MAR 2024</span>
+        </div>
+        <div class="exp-company">UpSkill Academy (Virtual)</div>
+        <div class="exp-project">&nbsp;</div>
+        <ul class="exp-list">
+          <li>Developed Python applications using modular and exception-safe coding practices.</li>
+        </ul>
+        <div class="exp-tags"><span class="role-tag">PYTHON</span><span class="role-tag">EXCEPTION HANDLING</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ROLES -->
 <section id="roles">
   <div class="reveal">
-    <p class="section-label">// 02 &mdash; DOMAINS</p>
+    <p class="section-label">// 03 &mdash; DOMAINS</p>
     <h2 class="section-title">WHAT I DO</h2>
   </div>
   <div class="roles-grid reveal">
@@ -577,7 +685,7 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="reveal">
-    <p class="section-label">// 03 &mdash; WORK</p>
+    <p class="section-label">// 04 &mdash; WORK</p>
     <h2 class="section-title">PROJECTS</h2>
   </div>
   <div class="projects-grid reveal">
@@ -593,7 +701,7 @@
       <h3>LinkedIn Automation Testing</h3>
       <p>Automated LinkedIn workflows to identify Software Testing role profiles &mdash; login, job search, profile extraction &mdash; with stable Selenium regression scripts.</p>
       <div class="project-techs"><span class="tech-tag">JAVA</span><span class="tech-tag">SELENIUM</span><span class="tech-tag">AUTOMATION</span></div>
-      <a href="https://drive.google.com/drive/folders/12SdYa4pLRXibEyWlnn1xLknQb9UFgEgN?usp=sharing" target="_blank" class="project-link">View on Drive</a>
+      <a href="https://github.com/HARSHITH-H-D" target="_blank" class="project-link">View on GitHub</a>
     </div>
     <div class="project-card">
       <div class="project-num">03</div>
@@ -623,20 +731,6 @@
       <div class="project-techs"><span class="tech-tag">PYTHON</span><span class="tech-tag">SCIKIT-LEARN</span><span class="tech-tag">TENSORFLOW</span></div>
       <a href="https://github.com/HARSHITH-H-D/AI-and-ML" target="_blank" class="project-link">View on GitHub</a>
     </div>
-    <div class="project-card">
-      <div class="project-num">07</div>
-      <h3>UML2Test AI</h3>
-      <p>Built an end-to-end pipeline that transforms UML diagrams into unified graphs and leverages Graph Neural Networks (GCN/GAT) for pattern recognition and classification.</p>
-      <div class="project-techs"><span class="tech-tag">PYTHON</span><span class="tech-tag">UML DIAGRAMS</span><span class="tech-tag">TEST CASE CREATION</span></div>
-      <a href="https://github.com/HARSHITH-H-D/UML-2-Test-AI" target="_blank" class="project-link">View on GitHub</a>
-    </div>
-    <div class="project-card">
-      <div class="project-num">08</div>
-      <h3>Binance Trading Bot</h3>
-      <p>A lightweight Python CLI trading bot that places Market, Limit, and Stop-Limit orders on Binance Futures Testnet (USDT-M) with structured logging and error handling.</p>
-      <div class="project-techs"><span class="tech-tag">PYTHON</span><span class="tech-tag">UML DIAGRAMS</span><span class="tech-tag">TEST CASE CREATION</span></div>
-      <a href="https://github.com/HARSHITH-H-D/Binance_Trading_Bot" target="_blank" class="project-link">View on GitHub</a>
-    </div>
   </div>
 </section>
 
@@ -645,7 +739,7 @@
 <!-- SKILLS -->
 <section id="skills" class="skills-section">
   <div class="reveal">
-    <p class="section-label">// 04 &mdash; ARSENAL</p>
+    <p class="section-label">// 05 &mdash; ARSENAL</p>
     <h2 class="section-title">SKILLS &amp; TOOLS</h2>
   </div>
   <div class="skills-cols reveal">
@@ -675,7 +769,7 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="reveal">
-    <p class="section-label">// 05 &mdash; CONTACT</p>
+    <p class="section-label">// 06 &mdash; CONTACT</p>
     <h2 class="section-title">GET IN TOUCH</h2>
   </div>
   <div class="contact-grid reveal">
